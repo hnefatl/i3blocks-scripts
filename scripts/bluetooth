@@ -8,7 +8,6 @@ if [[ "$BLOCK_BUTTON" -eq 2 ]] ; then # Middle-click
     else
         @procps@/bin/pkill blueman-applet >/dev/null
     fi
-# Disabled this approach, it kinda conflicts with blueman
 elif [[ "$BLOCK_BUTTON" -eq 3 ]] ; then # Right-click
     if [[ "$bluetoothactive" -eq 0 ]] ; then
         @bluez-tools@/bin/bt-adapter --set Powered 1
@@ -17,10 +16,9 @@ elif [[ "$BLOCK_BUTTON" -eq 3 ]] ; then # Right-click
     fi
 fi
 
-echo "BT"
-echo "BT"
+echo "BT $bluetoothactive"
+echo "BT $bluetoothactive"
 if [[ "$bluetoothactive" -eq 1 ]] ; then
-    
     if [[ bluetooth-connected ]] ; then
         echo \#00FF00
     else

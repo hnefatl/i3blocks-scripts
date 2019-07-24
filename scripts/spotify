@@ -3,7 +3,7 @@
 PREMIUM=0
 
 if [[ "$BLOCK_BUTTON" -eq 3 ]] ; then
-    playerctl play-pause
+    @playerctl@/bin/playerctl play-pause
 fi
 
 song=$(@playerctl@/bin/playerctl metadata title) || exit 0
