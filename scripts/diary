@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [[ "$(date +%H)" -gt 20 ]] ; then
+    echo "DIARY"
+    echo "DIARY"
+    if [[ -f "$DIARY_DIR/$(date +%F)" ]] ; then
+        echo \#00FF00
+    else
+        echo \#FF0000
+    fi
+fi
