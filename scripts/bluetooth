@@ -10,14 +10,14 @@ if [[ "$BLOCK_BUTTON" -eq 2 ]] ; then # Middle-click
     fi
 elif [[ "$BLOCK_BUTTON" -eq 3 ]] ; then # Right-click
     if [[ "$bluetoothactive" -eq 0 ]] ; then
-        @bluez_tools@/bin/bt-adapter --set Powered 1
+        @bluez_tools@/bin/bt-adapter --set Powered 1 >/dev/null
     else
-        @bluez_tools@/bin/bt-adapter --set Powered 0
+        @bluez_tools@/bin/bt-adapter --set Powered 0 >/dev/null
     fi
 fi
 
-echo "$bluetoothactive BT"
-echo "$bluetoothactive BT"
+echo "BT"
+echo "BT"
 if [[ "$bluetoothactive" -eq 1 ]] ; then
     if [[ bluetooth-connected ]] ; then
         echo \#00FF00
