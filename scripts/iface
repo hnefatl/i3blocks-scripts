@@ -16,10 +16,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 if [[ "$BLOCK_BUTTON" -eq 3 ]] ; then
-    if [[ "$(pgrep nm-applet)" == "" ]] ; then # Start nm-applet if it's not running already
+    if [[ "$(@procps@/bin/pgrep nm-applet)" == "" ]] ; then # Start nm-applet if it's not running already
 	    @i3@/bin/i3-msg exec -- --no-startup-id "@networkmanager@/bin/nm-applet" >/dev/null
     else
-        pkill nm-applet >/dev/null
+        @procps@/bin/pkill nm-applet >/dev/null
     fi
 fi
 

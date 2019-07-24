@@ -1,12 +1,12 @@
 #!@bash@/bin/bash
 
-bluetoothactive="$(@bluez-tools@/bin/bt-adapter --info | grep \"Powered\" | sed "s|.*Powered: \(.\) .*|\1|")"
+bluetoothactive="$(@bluez-tools@/bin/bt-adapter --info | grep Powered | sed 's|.*Powered: \(.\) .*|\1|')"
 
 if [[ "$BLOCK_BUTTON" -eq 2 ]] ; then # Middle-click
-    if [[ "$(pgrep blueman-applet)" == "" ]] ; then # Start blueman-applet if it's not running already
+    if [[ "$(@procps@/bin/pgrep blueman-applet)" == "" ]] ; then # Start blueman-applet if it's not running already
 	    @i3@/bin/i3-msg exec -- --no-startup-id "@blueman@/bin/blueman-applet" >/dev/null
     else
-        pkill blueman-applet >/dev/null
+        @procps@/bin/pkill blueman-applet >/dev/null
     fi
 # Disabled this approach, it kinda conflicts with blueman
 elif [[ "$BLOCK_BUTTON" -eq 3 ]] ; then # Right-click

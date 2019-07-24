@@ -6,7 +6,7 @@ in
 
         phases = [ "installPhase" "fixupPhase" ];
 
-        inherit (pkgs) bash perl acpi libnotify blueman bluez bluez-tools sysstat i3 networkmanager iproute playerctl pulseaudio kmod alsaUtils;
+        inherit (pkgs) bash perl acpi libnotify blueman bluez bluez-tools sysstat i3 networkmanager iproute playerctl pulseaudio kmod alsaUtils procps;
 
         installPhase = ''
             mkdir -p "$out/bin"
