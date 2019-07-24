@@ -6,7 +6,8 @@ in
 
         phases = [ "installPhase" "fixupPhase" ];
 
-        inherit (pkgs) bash perl acpi libnotify blueman bluez bluez-tools sysstat i3 networkmanager iproute playerctl pulseaudio kmod alsaUtils procps;
+        inherit (pkgs) bash perl acpi libnotify blueman bluez sysstat i3 networkmanager iproute playerctl pulseaudio kmod alsaUtils procps;
+        bluez_tools = pkgs.bluez-tools; # Can't inherit as `-` isn't allowed in env var names.
 
         installPhase = ''
             mkdir -p "$out/bin"
