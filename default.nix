@@ -2,7 +2,7 @@ let
     pkgs = import <nixpkgs> { };
 in
     pkgs.stdenv.mkDerivation {
-        name = "i3blocks-script";
+        name = "i3blocks-scripts";
 
         phases = [ "installPhase" "fixupPhase" ];
 
