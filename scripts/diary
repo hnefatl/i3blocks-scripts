@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!@bash@/bin/bash
 
 if [[ "$(date +%H)" -gt 20 ]] ; then
     echo "DIARY"

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!@bash@/bin/bash
 # Copyright (C) 2014 Julien Bonjean <julien@bonjean.info>
 # Copyright (C) 2014 Alexander Keller <github@nycroth.com>
 
@@ -17,7 +17,7 @@
 
 if [[ "$BLOCK_BUTTON" -eq 3 ]] ; then
     if [[ "$(pgrep nm-applet)" == "" ]] ; then # Start nm-applet if it's not running already
-	    i3-msg exec -- --no-startup-id "nm-applet" >/dev/null
+	    @i3@/bin/i3-msg exec -- --no-startup-id "@networkmanager@/bin/nm-applet" >/dev/null
     else
         pkill nm-applet >/dev/null
     fi
@@ -29,7 +29,7 @@ fi
 if [[ -n $BLOCK_INSTANCE ]]; then
   IF=$BLOCK_INSTANCE
 else
-  IF=$(ip route | awk '/^default/ { print $5 ; exit }')
+  IF=$(@iproute@/bin/ip route | awk '/^default/ { print $5 ; exit }')
 fi
 
 #------------------------------------------------------------------------
@@ -57,7 +57,7 @@ case $1 in
 esac
 
 # if no interface is found, use the first device with a global scope
-IPADDR=$(ip addr show $IF | perl -n -e "/$AF ([^\/]+).* scope global/ && print \$1 and exit")
+IPADDR=$(@iproute@/bin/ip addr show $IF | @perl@/bin/perl -n -e "/$AF ([^\/]+).* scope global/ && print \$1 and exit")
 
 case $BLOCK_BUTTON in
   2) echo -n "$IPADDR" | xclip -q -se c ;;

@@ -1,19 +1,19 @@
-#!/usr/bin/env bash
+#!@bash@/bin/bash
 
-bluetoothactive="$(bt-adapter --info | grep \"Powered\" | sed "s|.*Powered: \(.\) .*|\1|")"
+bluetoothactive="$(@bluez-tools@/bin/bt-adapter --info | grep \"Powered\" | sed "s|.*Powered: \(.\) .*|\1|")"
 
 if [[ "$BLOCK_BUTTON" -eq 2 ]] ; then # Middle-click
     if [[ "$(pgrep blueman-applet)" == "" ]] ; then # Start blueman-applet if it's not running already
-	    i3-msg exec -- --no-startup-id "blueman-applet" >/dev/null
+	    @i3@/bin/i3-msg exec -- --no-startup-id "@blueman@/bin/blueman-applet" >/dev/null
     else
         pkill blueman-applet >/dev/null
     fi
 # Disabled this approach, it kinda conflicts with blueman
 elif [[ "$BLOCK_BUTTON" -eq 3 ]] ; then # Right-click
     if [[ "$bluetoothactive" -eq 0 ]] ; then
-        bt-adapter --set Powered 1
+        @bluez-tools@/bin/bt-adapter --set Powered 1
     else
-        bt-adapter --set Powered 0
+        @bluez-tools@/bin/bt-adapter --set Powered 0
     fi
 fi
 
@@ -21,7 +21,7 @@ echo "BT"
 echo "BT"
 if [[ "$bluetoothactive" -eq 1 ]] ; then
     
-    if [[ "$(./bluetooth-connected)" -eq 1 ]] ; then
+    if [[ bluetooth-connected ]] ; then
         echo \#00FF00
     else
         echo \#FFA500

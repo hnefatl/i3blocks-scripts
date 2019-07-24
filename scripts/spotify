@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!@bash@/bin/bash
 
 PREMIUM=0
 
@@ -6,14 +6,14 @@ if [[ "$BLOCK_BUTTON" -eq 3 ]] ; then
     playerctl play-pause
 fi
 
-song=$(playerctl metadata title) || exit 0
-album=$(playerctl metadata album) || exit 0
-artist=$(playerctl metadata artist) || exit 0
-status=$(playerctl status) || exit 0
+song=$(@playerctl@/bin/playerctl metadata title) || exit 0
+album=$(@playerctl@/bin/playerctl metadata album) || exit 0
+artist=$(@playerctl@/bin/playerctl metadata artist) || exit 0
+status=$(@playerctl@/bin/playerctl status) || exit 0
 length=50
 
 get_spotify_index () {
-    echo $(pacmd list-sink-inputs | awk -v name=spotify '$1 == "index:" {idx = $2} ; $1 == "application.name" && $3 == "\"" name "\"" {print idx; exit}')
+    @pulseaudio@/bin/pacmd list-sink-inputs | awk -v name=spotify '$1 == "index:" {idx = $2} ; $1 == "application.name" && $3 == "\"" name "\"" {print idx; exit}'
 }
 
 if [[ ! "$PREMIUM" ]] ; then
@@ -22,14 +22,14 @@ if [[ ! "$PREMIUM" ]] ; then
     if [[ "$song" == "Advertisement" || "$song" == "Spotify" ]] && [[ "$album" == "" ]] && [[ "$artist" == "" ]] ; then
         # Temp file exists, we've already muted for this advert
         if [[ ! -f "$ad_playing_file" ]] ; then
-            pacmd set-sink-input-mute $(get_spotify_index) 1
+            @pulseaudio@/bin/pacmd set-sink-input-mute $(get_spotify_index) 1
             touch "$ad_playing_file"
         fi
     else
         if [[ -f "$ad_playing_file" ]] ; then
             # No ad but file exists, ad just ended.
             sleep 1
-            pacmd set-sink-input-mute $(get_spotify_index) 0
+            @pulseaudio@/bin/pacmd set-sink-input-mute $(get_spotify_index) 0
             rm "$ad_playing_file"
         fi
     fi

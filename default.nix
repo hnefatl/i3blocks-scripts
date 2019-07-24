@@ -6,10 +6,21 @@ in
 
         phases = [ "installPhase" "fixupPhase" ];
 
-        buildInputs = with pkgs; [ bash perl acpi libnotify blueman bluez bluez-tools sysstat i3 networkmanager iproute playerctl pulseaudio ];
+        inherit (pkgs) bash perl acpi libnotify blueman bluez bluez-tools sysstat i3 networkmanager iproute playerctl pulseaudio kmod alsaUtils;
 
         installPhase = ''
             mkdir -p "$out/bin"
-            cp "${./scripts}/"* "$out/bin/"
+            substituteAll "${./scripts/battery}" "$out/bin/battery"
+            substituteAll "${./scripts/bluetooth}" "$out/bin/bluetooth"
+            substituteAll "${./scripts/bluetooth-connected}" "$out/bin/bluetooth-connected"
+            substituteAll "${./scripts/cpu_usage}" "$out/bin/cpu_usage"
+            substituteAll "${./scripts/diary}" "$out/bin/diary"
+            substituteAll "${./scripts/iface}" "$out/bin/iface"
+            substituteAll "${./scripts/memory}" "$out/bin/memory"
+            substituteAll "${./scripts/spotify}" "$out/bin/spotify"
+            substituteAll "${./scripts/volume}" "$out/bin/volume"
+            substituteAll "${./scripts/wifi}" "$out/bin/wifi"
+
+            chmod +x "$out/bin/"*
         '';
     }
