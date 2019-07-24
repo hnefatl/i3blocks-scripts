@@ -15,6 +15,7 @@ in
             substituteAll "${./scripts/bluetooth-connected}" "$out/bin/bluetooth-connected"
             substituteAll "${./scripts/cpu_usage}" "$out/bin/cpu_usage"
             substituteAll "${./scripts/diary}" "$out/bin/diary"
+            substituteAll "${./scripts/disk}" "$out/bin/disk"
             substituteAll "${./scripts/iface}" "$out/bin/iface"
             substituteAll "${./scripts/memory}" "$out/bin/memory"
             substituteAll "${./scripts/spotify}" "$out/bin/spotify"
