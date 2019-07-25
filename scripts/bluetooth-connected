@@ -1,9 +1,0 @@
-#!@bash@/bin/bash
-
-IFS=$'\n'
-for line in $(@bluez_tools@/bin/bt-device --list | tail -n +2) ; do # Skip first line (says "Added devices")
-    mac=$(echo "$line" | sed 's/.*(\(.*\))/\1/')
-    bt-device --info="$mac" | grep "Connected: 1" &>/dev/null && echo 1 && exit 0
-done
-echo 0
-exit 1

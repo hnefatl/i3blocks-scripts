@@ -19,7 +19,7 @@ fi
 echo "BT"
 echo "BT"
 if [[ "$bluetoothactive" -eq 1 ]] ; then
-    if [[ bluetooth-connected ]] ; then
+    if [[ @useful_scripts@/bin/bluetooth-connected ]] ; then
         echo \#00FF00
     else
         echo \#FFA500
