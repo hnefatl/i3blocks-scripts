@@ -11,8 +11,8 @@ in
         useful_scripts = import (pkgs.fetchFromGitHub {
             owner = "hnefatl";
             repo = "useful-scripts";
-            rev = "686872ff523ea1c719fcf935a66f394b058bffd5";
-            sha256 = "137zn45iv73iq033xvclpkpvj2c89pp8hbkxj66xmf1xah030m6p";
+            rev = "e300b854385cbd52ac613509005134e2b45de942";
+            sha256 = "0jr5bai105cg2b16vf82j3xanpmrv79wfjy85x6baai22w78frdp";
         });
 
         installPhase = ''
