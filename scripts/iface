@@ -17,7 +17,7 @@
 
 if [[ "$BLOCK_BUTTON" -eq 3 ]] ; then
     if [[ "$(@procps@/bin/pgrep nm-applet)" == "" ]] ; then # Start nm-applet if it's not running already
-	    @i3@/bin/i3-msg exec -- --no-startup-id "@networkmanager@/bin/nm-applet" >/dev/null
+	    @i3@/bin/i3-msg exec -- --no-startup-id "@networkmanagerapplet@/bin/nm-applet" >/dev/null
     else
         @procps@/bin/pkill nm-applet >/dev/null
     fi

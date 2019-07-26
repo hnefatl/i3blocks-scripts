@@ -6,7 +6,7 @@ in
 
         phases = [ "installPhase" "fixupPhase" ];
 
-        inherit (pkgs) bash perl acpi libnotify blueman bluez sysstat i3 networkmanager iproute playerctl pulseaudio kmod alsaUtils procps brightnessctl;
+        inherit (pkgs) bash perl acpi libnotify blueman bluez sysstat i3 networkmanagerapplet iproute playerctl pulseaudio kmod alsaUtils procps brightnessctl;
         bluez_tools = pkgs.bluez-tools; # Can't inherit as `-` isn't allowed in env var names.
         useful_scripts = import (pkgs.fetchFromGitHub {
             owner = "hnefatl";
