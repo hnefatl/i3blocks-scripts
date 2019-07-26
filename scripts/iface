@@ -59,10 +59,6 @@ esac
 # if no interface is found, use the first device with a global scope
 IPADDR=$(@iproute@/bin/ip addr show $IF | @perl@/bin/perl -n -e "/$AF ([^\/]+).* scope global/ && print \$1 and exit")
 
-case $BLOCK_BUTTON in
-  2) echo -n "$IPADDR" | xclip -q -se c ;;
-esac
-
 #------------------------------------------------------------------------
 
 if [[ "$IPADDR" == "" ]] ; then
